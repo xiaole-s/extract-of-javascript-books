@@ -1,4 +1,4 @@
-// Emulate the XMLHttpRequest() constructor in IE5 and IE6
+
 if (window.XMLHttpRequest === undefined) {
   window.XMLHttpRequest = function() {
     try {
