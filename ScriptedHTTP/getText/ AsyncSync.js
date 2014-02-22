@@ -29,7 +29,7 @@ function getTextSync(url) {
 }
 
 function gtCallback(t) {
-    alert(t);
+    test.innerHTML += '<div>' + t + '</div>';//测试+=性能不好
 }
 gt1.onclick = function () {
     getTextAsync(gt1.dataset.url, gtCallback);
