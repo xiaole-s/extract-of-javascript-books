@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+div {
+  background-color: #ff6a00;
+}
+div:nth-child(2n+1) {
+  background-color: #b6ff00;
+}
