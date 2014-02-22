@@ -65,29 +65,31 @@ server.on("request", function (request, response) {
             case "html":
             case "htm": type = "text/html; charset=UTF-8"; break;
             case "js": type = "application/javascript; charset=UTF-8"; break;
-        case "css": type = "text/css; charset=UTF-8"; break;
-        case "txt": type = "text/plain; charset=UTF-8"; break;
-        case "manifest": type = "text/cache-manifest; charset=UTF-8"; break;
-        default: type = "application/octet-stream"; break;
-    }
+            case "css": type = "text/css; charset=UTF-8"; break;
+            case "txt": type = "text/plain; charset=UTF-8"; break;
+            case "manifest": type = "text/cache-manifest; charset=UTF-8"; break;
+            case "json": type = "application/json"; break;
+            case "xml": type = "application/json; charset=UTF-8"; break;
+            default: type = "application/octet-stream"; break;
+        }
         // Read the file asynchronously and pass the content as a single
         // chunk to the callback function. For really large files, using the
         // streaming API with fs.createReadStream() would be better.
         //请求的文件通过服务其本地读取后加入到响应体返回
-    fs.readFile(filename, function (err, content) {
-        if (err) { // If we couldn't read the file for some reason
-            response.writeHead(404, { // Send a 404 Not Found status
-                "Content-Type": "text/plain; charset=UTF-8"
-            });
-            response.write(err.message); // Simple error message body
-            response.end(); // Done
-        }
-        else { // Otherwise, if the file was read successfully.
-            response.writeHead(200, // Set the status code and MIME type
-            { "Content-Type": type });
-            response.write(content); // Send file contents as response body
-            response.end(); // And we're done 响应结束
-        }
-    });
-}
+        fs.readFile(filename, function (err, content) {
+            if (err) { // If we couldn't read the file for some reason
+                response.writeHead(404, { // Send a 404 Not Found status
+                    "Content-Type": "text/plain; charset=UTF-8"
+                });
+                response.write(err.message); // Simple error message body
+                response.end(); // Done
+            }
+            else { // Otherwise, if the file was read successfully.
+                response.writeHead(200, // Set the status code and MIME type
+                { "Content-Type": type });
+                response.write(content); // Send file contents as response body
+                response.end(); // And we're done 响应结束
+            }
+        });
+    }
 });
