@@ -1,5 +1,5 @@
 //安装nodejs,命令行到指定文件目录运行脚本[node nodeHttpServer.js]此目录为该服
-//务器目录,即可打开浏览器测试ScriptedHttp中的代码
+//务器目录,即可打开浏览器测试ScriptedHttp中的代码 
 // This is a simple NodeJS HTTP server that can serve files from the current
 // directory and also implements two special URLs for testing.
 // Connect to the server at http://localhost:8000 or http://127.0.0.1:8000
