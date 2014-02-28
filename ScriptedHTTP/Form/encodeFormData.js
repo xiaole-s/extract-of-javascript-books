@@ -11,5 +11,5 @@ function encodeFormData(data) {
         value = encodeURIComponent(value.replace("%20", "+"));
         pairs.push(name + "=" + value);
     }
-    return pairs.join("&");//为构建URL并列字符串准备
+    return pairs.join("&");//为构建表单编码字符串
 }
