@@ -1,3 +1,4 @@
+//通过捕获DOMContentLoaded和readystatechange事件来确定文档加载完成时以开始其他操作
 var whenReady = (function () {
     var funcs = [];//当获得事件时要运行的函数
     var ready = false;//当触发事件时设为true
