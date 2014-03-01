@@ -1,4 +1,4 @@
-//XML作为主体的HTTP POST请求
+//XML作为主体的HTTP POST请求 
 function postQuery(url, what, where, radius, callback) {
     var request = new XMLHttpRequest();
     request.open("POST", url);
