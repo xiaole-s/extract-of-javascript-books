@@ -1,3 +1,4 @@
+//比typeof更细的明确类型
 function classof(o) {
     if (o === null) return "Null";
     if (o === undefined) return "Undefined";
