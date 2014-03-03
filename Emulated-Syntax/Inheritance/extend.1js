@@ -22,7 +22,7 @@ Person.prototype.getName = function() {
 /* Class Author. */
 
 function Author(name, books) {
-  Person.call(this, name);
+  Person.call(this, name);//此例需要传参给父类，因此须在子类中调用父类构造函数
   this.books = books;
 }
 extend(Author, Person);
