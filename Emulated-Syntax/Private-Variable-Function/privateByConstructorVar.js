@@ -42,7 +42,7 @@ var Book = function(newIsbn, newTitle, newAuthor) { // implements Publication
 // Public, non-privileged methods.
 Book.prototype = {
     display: function() {
-        return "国际书号：" + this.getIsbn() + ", 标题：" + this.getTitle() +
+        return "国际书号：" + this.getIsbn()/*Isbn/this.Isbn:private error*/ + ", 标题：" + this.getTitle() +
                  ", 作者：" + this.getAuthor();
     }
 };
