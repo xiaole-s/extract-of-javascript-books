@@ -1,3 +1,5 @@
+//实例：http://codepen.io/xiaole/pen/sfyqH
+
 function myPos(elt) {
     var options = {
         enableHightAccuracy: false,//true请求高精度
