@@ -25,7 +25,7 @@ function drag(elementToDrag, event) {
     //同时不让时间传到其他元素（冒泡或捕捉）
     stopPropagate(event);
     //阻止默认行为
-    cancelHandler(event);
+    preventDefaultHandler(event);
 
     function moveHandler(e) {
         if (!e) {
