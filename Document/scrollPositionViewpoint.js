@@ -146,7 +146,7 @@ function getElementPos(elt) {
 var ele=document.getElementById('fork');
 var box = ele.getBoundingClientRect();
 var offsets = getScrollOffsets();
-//元素ele的视口坐标+当前文档偏移量=ele的当前文档坐标;
+//元素ele的当前文档坐标 = ele的视口坐标 + 当前文档偏移量;
 var x = box.left + offsets.x; 
 var y = box.top + offsets.y;
 
