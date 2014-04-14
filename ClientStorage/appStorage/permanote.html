@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html manifest="permanote.appcache">
+<head>
+    <title>PermaNote Editor</title>
+    <link href="css/permanote.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="toolbar">
+        <button id="savebutton" onclick="save()">Save</button>
+        <button onclick="sync()">Sync Note</button>
+        <button onclick="applicationCache.update()">Update Application</button>
+    </div>
+    <textarea id="editor"></textarea>
+    <div id="statusline"></div>
+    <script src="js/permanote.js"></script>
+</body>
+</html>
