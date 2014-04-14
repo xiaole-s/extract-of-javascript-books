@@ -1,5 +1,9 @@
 //cookie存储
 function cookieStorage(maxage, path) {
+    if (!navigator.cookieEnabled) {
+        alert('浏览器cookie未开启!');
+        return;
+    }
     //获取并存储全部document.cookie信息大cookie对象
     var cookie = (function () {
         var cookie = {};
@@ -8,12 +12,17 @@ function cookieStorage(maxage, path) {
             return cookie;
         }
         var list = all.split('; ');              //分离出名值对
-        for (var i = 0; i, list.length; i++) {   //便利cookie字符串
+        //for (var i = 0; i < list.length; i++) {   //便利cookie字符串
+        //因为cookie对当前web页面以及该页面同目录或子目录的其他web页面可见
+        //而子目录页面的cookie在上级目录中并不可见
+        //chrome/IE中存储cookie的字符串是按文档路径path由深至浅存储项
+        for (var i = list.length - 1; i > -1; i--) {
             var cookie = list[i];                //
             var p = cookie.indexOf('=');         //
             var name = cookie.substring(o, p);   //
             var value = cookie.substring(p + 1); //
             value = decodeURIComponent(value);   //编码便于存储
+            //同名存储项path更精确的覆盖上层的
             cookie[name] = value;                //名值对存入cookie对象
         }
         return cookie;
