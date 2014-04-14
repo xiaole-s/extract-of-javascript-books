@@ -1,0 +1,14 @@
+CACHE MANIFEAT
+#version：1.0
+CACHE:
+ClientStorage.html
+css/ClientStorage.css
+js/ClientStorage.js
+#每一行（一项）有两个URL  第二个是第一个请求失败的代替
+FALLBACK:
+videos/ offline.html
+images/me_1.jpg  http://www.google.com.hk/img.jpg
+
+#never cache 路径只到文件夹则保罗该目录一下全部 支持通配符*
+NETWORK:
+content/
