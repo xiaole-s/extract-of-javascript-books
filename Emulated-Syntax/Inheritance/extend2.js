@@ -5,8 +5,9 @@ function extend(subClass, superClass) {
   F.prototype = superClass.prototype;
   subClass.prototype = new F();
   subClass.prototype.constructor = subClass;
-    //验证/还原 保证继承没有影响到父类
+  //降低耦合性 子类直接通过superclass属性访问父类，而不用事先知道父类
   subClass.superclass = superClass.prototype;
+  //验证/还原 保证继承没有影响到父类
   if(superClass.prototype.constructor == Object.prototype.constructor) {
     superClass.prototype.constructor = superClass;
   }
