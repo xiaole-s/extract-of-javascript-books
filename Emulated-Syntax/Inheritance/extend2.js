@@ -13,22 +13,32 @@ function extend(subClass, superClass) {
   }
 }
 
-
-/* Class Author. */
-
-function Author(name, books) {
-    //这样可在不知其父类名的情况下赋值 这样耦合性更低
-  Author.superclass.constructor.call(this, name);
-  this.books = books;
+/* Class Person. */
+function Person(name){
+    this.name = name;
 }
-//继承函数
-extend(Author, Person);
+Person.prototype.getName=function(){
+    return this.name;
+}
+/* Class Teacher. */
+function Teacher(name, subjects) {
+    //这样可在不知其父类名的情况下赋值 这样耦合性更低
+  Teacher.superclass.constructor.call(this, name);
+  this.subjects = subjects;
+}
+//继承函数调用
+extend(Teacher, Person);
 
-Author.prototype.getBooks = function() {
-  return this.books;
+Teacher.prototype.getSubjects = function() {
+  return this.subjects;
 };
 
-Author.prototype.getName = function() {
-  var name = Author.superclass.getName.call(this);
-  return name + ', Author of ' + this.getBooks().join(', ');
+Teacher.prototype.getName = function() {
+  var name = Teacher.superclass.getName.call(this);
+  return name + 'is a teacher of' + this.getSubjects().join(', ');
 };
+
+(new Teacher("xiaole", ["数学","语文","物理"])).getSubjects().join("和");
+//["数学", "语文", "物理"]
+(new Teacher("xiaole", ["数学","语文","物理"])).getName()
+//"xiaole is a teacher of 数学, 语文, 物理"
