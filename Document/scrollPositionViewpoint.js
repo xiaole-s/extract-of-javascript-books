@@ -13,7 +13,7 @@ clientWidth Height
 //包含上左的滚动条但不包括右下的
 clientTop Left
 
-//
+//相对父级偏移量
 offsetWidth Height 
 
 //包括内边框+溢出内容尺寸 无溢出时=clientWidth Height
