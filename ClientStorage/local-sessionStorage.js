@@ -35,7 +35,7 @@ sessionStorage.removeItem('x');   //移除指定存储数据（属性、名值�
 //方法只是返回了指定元素的值副本
 
 //localStorage & sessionStorage存储事件(遵循作用域，firefox/IE8至今仍不支持)
-//需要在同源不同窗口（标签页）间才能触发
+//需要在同源不同窗口（标签页）间才能触发,即在同一个浏览器中的两个或多个标签页或窗口间（非触发页）
 //真正的发生改变才会触发事件，如设置的新值与旧值相同或删除不存在的存储项则不会触发
 onstorage = function (e) {
     alert('The changed key is ' + e.key + ' and \nthe new value is ' + e.newValue +
