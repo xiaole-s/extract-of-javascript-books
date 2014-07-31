@@ -42,3 +42,5 @@ onstorage = function (e) {
         '\nthe old value is ' + e.oldValue + '\nstorageArea is ' + e.storageArea +
         '\nthe source url is ' + e.url);
 }
+
+//使用浏览器在大部分浏览器无痕模式下不支持者写存储
