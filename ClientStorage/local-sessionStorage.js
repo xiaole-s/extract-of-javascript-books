@@ -13,7 +13,7 @@ localStorage.clear();           //清楚所有
 localStorage.key();             //从0开始
 localStorage.removeItem()       //移除指定存储数据（属性、名值对）
 
-
+//对象存储可使用setItem("keyA",JSON.stringify({a:1, b:2}));
 
 /*sessionStorage
  *存  储：与顶级窗口等同（标签页），特殊当前大多浏览器可恢复指定已关闭标签页，因
