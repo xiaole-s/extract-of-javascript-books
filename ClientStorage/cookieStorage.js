@@ -5,11 +5,11 @@ function cookieStorage(maxage, path) {
         return;
     }
     //获取并存储全部document.cookie信息大cookie对象
-    var cookie = (function () {
-        var cookie = {};
+    var cookies = (function () {
+        var cookies = {};
         var all = document.cookie;
         if ("" === all) {
-            return cookie;
+            return cookies;
         }
         var list = all.split('; ');              //分离出名值对
         //for (var i = 0; i < list.length; i++) {   //便利cookie字符串
@@ -19,18 +19,18 @@ function cookieStorage(maxage, path) {
         for (var i = list.length - 1; i > -1; i--) {
             var cookie = list[i];                //
             var p = cookie.indexOf('=');         //
-            var name = cookie.substring(o, p);   //
+            var name = cookie.substring(0, p);   //
             var value = cookie.substring(p + 1); //
             value = decodeURIComponent(value);   //编码便于存储
             //同名存储项path更精确的覆盖上层的
-            cookie[name] = value;                //名值对存入cookie对象
+            cookies[name] = value;                //名值对存入cookie对象
         }
-        return cookie;
+        return cookies;
     }());
 
     //将所有cookie的名字存储到一个数组中
     var keys = [];
-    for (var key in cookie) {
+    for (var key in cookies) {
         keys.push(key);
     }
     //cookie的大小
@@ -44,7 +44,7 @@ function cookieStorage(maxage, path) {
     };
     //返回指定名字的cookie值
     this.getItem = function (name) {
-        return cookie[name] || null;
+        return cookies[name] || null;
     };
     //存储cookie值
     this.setItem = function (key, value, maxage, path, domain, secure) {
@@ -52,12 +52,12 @@ function cookieStorage(maxage, path) {
             this.removeItem(key);
             return;
         }
-        if (!(key in cookie)) {
+        if (!(key in cookies)) {//null === cookies[key]
             keys.push(key);
             this.length++;
         }
         //将该cookie的名值对加到cookie对象
-        cookie[key] = value;
+        cookies[key] = value;
 
         //转换cookie[key]并添加到document.cookie字符串
         var cookieNew = key + "=" + encodeURIComponent(value);//编码准备数据
@@ -79,11 +79,11 @@ function cookieStorage(maxage, path) {
 
     //删除指定的cookie
     this.removeItem = function (key) {
-        if (!(key in cookie)) {//指定cookie不存在
+        if (!(key in cookies)) {//指定cookie不存在
             return;
         }
         //从内部cookie对象中删除指定cookie
-        delete cookie[key];
+        delete cookies[key];
         //同时将cookie中的名字也在内构keys[]中删除
         for (var i = 0; i < keys.length; i++) {
             if (keys[i] === key) {
@@ -102,7 +102,7 @@ function cookieStorage(maxage, path) {
             document.cookie = keys[i] += "=; max-age=0";
         }
         //重置内部状态
-        cookie = {};
+        cookies = {};
         keys = [];
         this.length = 0;
     };
