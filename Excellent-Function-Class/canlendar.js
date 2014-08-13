@@ -537,4 +537,5 @@
         }
     })
   */
+  //example: http://xiaole-s.github.io/Example/Canlendar/index.html
 }(jQuery))
